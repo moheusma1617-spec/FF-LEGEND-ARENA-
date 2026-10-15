@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d19">
+<title>FF LEGEND ARENA | التسجيل الرسمي</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d19;color:#f5f6fa;font-family:Arial,sans-serif}
+header{padding:25px 16px;text-align:center;background:linear-gradient(135deg,#101c32,#080d19);border-bottom:2px solid #d7ad58}
+.logo{font-size:28px;font-weight:900;color:#f5d58a;text-shadow:0 0 18px #d43c52}
+header p{color:#b8c5d9;font-size:13px}
+.hero{padding:35px 18px;text-align:center}
+.hero h1{font-size:27px;margin:8px 0;color:#fff}
+.hero p{color:#b8c5d9;line-height:1.8}
+.tag{color:#ff596b;font-weight:bold;letter-spacing:2px}
+.card{max-width:540px;margin:0 auto 35px;padding:22px 18px;background:#111a2b;border:1px solid #293851;border-radius:16px}
+.card h2{margin-top:0;color:#f5d58a;font-size:21px}
+label{display:block;margin:17px 0 8px;font-size:14px}
+input{width:100%;padding:13px;background:#080f1e;border:1px solid #35445d;border-radius:8px;color:white;font-size:16px}
+input:focus{outline:1px solid #e7b64e}
+button{width:100%;margin-top:22px;padding:14px;border:0;border-radius:8px;background:linear-gradient(90deg,#b82d45,#e0ad48);color:#fff;font-size:16px;font-weight:bold}
+.note{font-size:12px;color:#aab7cc;line-height:1.8}
+footer{text-align:center;padding:22px;color:#8795aa;font-size:12px;border-top:1px solid #26334a}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">FF LEGEND ARENA</div>
+  <p>OFFICIAL FREE FIRE TOURNAMENTS</p>
+</header>
+
+<section class="hero">
+  <div class="tag">COMPETE • DOMINATE • WIN</div>
+  <h1>سجّل سكوادك الآن</h1>
+  <p>هل فريقك مستعد للتحدي؟<br>أرسل بيانات السكواد وانتظر مراجعة الإدارة.</p>
+</section>
+
+<section class="card">
+  <h2>⚔️ استمارة تسجيل السكواد</h2>
+  <form id="registration">
+    <label for="tournament">اسم البطولة</label>
+    <input id="tournament" name="tournament" required
+      placeholder="اسم البطولة">
+
+    <label for="squad">اسم السكواد</label>
+    <input id="squad" name="squad" required maxlength="40"
+      placeholder="اسم الفريق داخل اللعبة">
+
+    <label for="captain">اسم الكابتن (IGN)</label>
+    <input id="captain" name="captain" required maxlength="40"
+      placeholder="اسم الكابتن">
+
+    <label for="captainId">ID الكابتن</label>
+    <input id="captainId" name="captainId" required
+      inputmode="numeric" pattern="[0-9]{5,20}"
+      placeholder="معرّف الكابتن">
+
+    <label for="player2">اسم اللاعب الثاني</label>
+    <input id="player2" name="player2" required maxlength="40"
+      placeholder="IGN اللاعب الثاني">
+
+    <label for="id2">ID اللاعب الثاني</label>
+    <input id="id2" name="id2" required inputmode="numeric"
+      pattern="[0-9]{5,20}" placeholder="ID اللاعب الثاني">
+
+    <label for="player3">اسم اللاعب الثالث</label>
+    <input id="player3" name="player3" required maxlength="40"
+      placeholder="IGN اللاعب الثالث">
+
+    <label for="id3">ID اللاعب الثالث</label>
+    <input id="id3" name="id3" required inputmode="numeric"
+      pattern="[0-9]{5,20}" placeholder="ID اللاعب الثالث">
+
+    <label for="player4">اسم اللاعب الرابع</label>
+    <input id="player4" name="player4" required maxlength="40"
+      placeholder="IGN اللاعب الرابع">
+
+    <label for="id4">ID اللاعب الرابع</label>
+    <input id="id4" name="id4" required inputmode="numeric"
+      pattern="[0-9]{5,20}" placeholder="ID اللاعب الرابع">
+
+    <label for="whatsapp">رقم واتساب الكابتن مع رمز الدولة</label>
+    <input id="whatsapp" name="whatsapp" required type="tel"
+      placeholder="+213...">
+
+    <p class="note">يرجى التأكد من صحة جميع المعلومات. إرسال الطلب لا يعني قبول التسجيل؛ ستراجع الإدارة البيانات أولاً.</p>
+    <button type="submit">إرسال طلب التسجيل</button>
+    <p id="message" class="note" aria-live="polite"></p>
+  </form>
+</section>
+
+<footer>
+  FF LEGEND ARENA © 2026<br>
+  ALL RIGHTS RESERVED
+</footer>
+
+<script>
+document.getElementById('registration').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('message').textContent =
+    'الواجهة جاهزة، لكن التسجيل لم يُرسل بعد. يجب ربط قاعدة البيانات قبل استقبال الطلبات.';
+});
+</script>
+</body>
+</html>
