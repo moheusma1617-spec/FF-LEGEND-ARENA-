@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FF LEGEND ARENA | التسجيل</title>
+<title>FF LEGEND ARENA - التسجيل</title>
+
 <style>
 :root {
   --gold: #f5c451;
@@ -12,7 +13,9 @@
   --blue: #36c8ff;
   --dark: #070b18;
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -20,172 +23,257 @@ body {
   background: var(--dark);
   min-height: 100vh;
 }
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(rgba(4,8,22,.88), rgba(4,8,22,.94)),
-    url("logo.jpg") center center / cover no-repeat;
+    linear-gradient(rgba(4,8,22,.86), rgba(4,8,22,.94)),
+    url("logo.jpg") center / cover no-repeat;
   z-index: -1;
 }
+
 header {
   text-align: center;
-  padding: 28px 15px 12px;
+  padding: 25px 15px 10px;
 }
-.logo {
+
+.main-logo {
   width: 100%;
-  max-width: 420px;
-  height: 170px;
+  max-width: 430px;
+  height: 180px;
   object-fit: contain;
-  filter: drop-shadow(0 0 15px #36c8ff66);
+  filter: drop-shadow(0 0 14px #36c8ff55);
 }
+
 h1 {
-  margin: 10px 0;
-  font-size: 27px;
   color: var(--gold);
+  font-size: 28px;
+  margin: 10px 0;
   text-shadow: 0 0 15px #f5c45155;
 }
+
 .subtitle {
-  color: #c8d6ef;
+  color: #d0d8e9;
   font-size: 14px;
 }
+
 .container {
-  width: min(92%, 560px);
-  margin: 20px auto 35px;
+  width: min(92%, 570px);
+  margin: 22px auto 35px;
   padding: 22px;
   border: 1px solid #f5c45188;
   border-radius: 18px;
-  background: rgba(8,14,32,.94);
-  box-shadow: 0 0 30px #0008, 0 0 18px #36c8ff18;
+  background: rgba(8,14,32,.96);
+  box-shadow: 0 0 25px #0009;
 }
+
 h2 {
-  text-align: center;
   color: var(--blue);
-  font-size: 20px;
+  text-align: center;
   margin-top: 0;
 }
-.note {
+
+.intro {
+  color: #c8d3e8;
+  font-size: 14px;
   text-align: center;
-  color: #c6cee0;
-  font-size: 13px;
   line-height: 1.8;
 }
-label {
-  display: block;
-  margin: 16px 0 7px;
-  font-size: 14px;
-  color: var(--gold);
-}
-input {
-  width: 100%;
-  padding: 13px;
-  color: white;
-  background: #101a30;
-  border: 1px solid #344763;
-  border-radius: 9px;
-  outline: none;
-  font-size: 15px;
-}
-input:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 8px #36c8ff44;
-}
+
 .section {
-  margin-top: 24px;
-  padding-top: 5px;
   border-top: 1px solid #344763;
+  margin-top: 24px;
+  padding-top: 12px;
 }
+
 .section h3 {
   color: var(--gold);
   font-size: 16px;
 }
-.optional {
-  color: #9caac3;
-  font-size: 12px;
+
+label {
+  display: block;
+  margin: 15px 0 7px;
+  color: #e8edf7;
+  font-size: 14px;
 }
+
+.required {
+  color: var(--red);
+}
+
+.optional {
+  color: #9eabc2;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #344763;
+  border-radius: 9px;
+  background: #101a30;
+  color: white;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 8px #36c8ff44;
+}
+
+input[type="file"] {
+  font-size: 13px;
+  padding: 10px;
+}
+
+.preview {
+  display: none;
+  width: 140px;
+  height: 140px;
+  margin: 15px auto 0;
+  object-fit: contain;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  background: #101a30;
+}
+
 button {
   width: 100%;
-  margin-top: 24px;
   padding: 15px;
+  margin-top: 24px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(100deg, #e9b63e, #ffdf83);
-  color: #11182a;
+  color: #101525;
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
 }
-button:active { transform: scale(.99); }
+
+.note {
+  color: #aab6cc;
+  font-size: 12px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+#message {
+  color: var(--gold);
+  margin-top: 15px;
+}
+
 footer {
   text-align: center;
-  padding: 10px 10px 25px;
+  padding: 10px 12px 25px;
   color: #9caac3;
   font-size: 12px;
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <img class="logo" src="logo.jpg" alt="FF LEGEND ARENA Logo">
+  <img class="main-logo" src="logo.jpg" alt="FF LEGEND ARENA">
   <h1>FF LEGEND ARENA</h1>
   <div class="subtitle">FREE FIRE TOURNAMENT</div>
 </header>
 
 <main class="container">
   <h2>تسجيل السكواد</h2>
-  <p class="note">
-    املأ معلومات قائد السكواد واللاعبين بدقة.<br>
-    اللاعبان الخامس والسادس اختياريان.
+
+  <p class="intro">
+    مرحباً بك في بطولة FF LEGEND ARENA.<br>
+    أدخل معلومات فريقك بدقة.<br>
+    لوغو السكواد إجباري، واللاعبان الخامس والسادس اختياريان.
   </p>
 
   <form id="registrationForm">
-    <label for="squad">اسم السكواد *</label>
-    <input id="squad" name="squad" required maxlength="60"
-           placeholder="أدخل اسم السكواد">
+
+    <div class="section">
+      <h3>معلومات السكواد</h3>
+
+      <label for="squad">
+        اسم السكواد <span class="required">*</span>
+      </label>
+      <input id="squad" name="squad" required maxlength="60"
+             placeholder="اسم فريقك داخل اللعبة">
+    </div>
 
     <div class="section">
       <h3>قائد السكواد</h3>
-      <label for="captain">اسم اللاعب داخل اللعبة *</label>
-      <input id="captain" name="captain" required maxlength="60">
 
-      <label for="captainId">ID اللاعب *</label>
+      <label for="captain">
+        اسم اللاعب <span class="required">*</span>
+      </label>
+      <input id="captain" name="captain" required maxlength="60"
+             placeholder="اسم القائد داخل اللعبة">
+
+      <label for="captainId">
+        ID اللاعب <span class="required">*</span>
+      </label>
       <input id="captainId" name="captainId" required
-             inputmode="numeric" maxlength="30">
+             inputmode="numeric" maxlength="30"
+             placeholder="ID القائد">
     </div>
 
     <div class="section">
       <h3>اللاعب الثاني</h3>
-      <label for="player2">اسم اللاعب *</label>
+
+      <label for="player2">
+        اسم اللاعب <span class="required">*</span>
+      </label>
       <input id="player2" name="player2" required maxlength="60">
-      <label for="player2Id">ID اللاعب *</label>
+
+      <label for="player2Id">
+        ID اللاعب <span class="required">*</span>
+      </label>
       <input id="player2Id" name="player2Id" required
              inputmode="numeric" maxlength="30">
     </div>
 
     <div class="section">
       <h3>اللاعب الثالث</h3>
-      <label for="player3">اسم اللاعب *</label>
+
+      <label for="player3">
+        اسم اللاعب <span class="required">*</span>
+      </label>
       <input id="player3" name="player3" required maxlength="60">
-      <label for="player3Id">ID اللاعب *</label>
+
+      <label for="player3Id">
+        ID اللاعب <span class="required">*</span>
+      </label>
       <input id="player3Id" name="player3Id" required
              inputmode="numeric" maxlength="30">
     </div>
 
     <div class="section">
       <h3>اللاعب الرابع</h3>
-      <label for="player4">اسم اللاعب *</label>
+
+      <label for="player4">
+        اسم اللاعب <span class="required">*</span>
+      </label>
       <input id="player4" name="player4" required maxlength="60">
-      <label for="player4Id">ID اللاعب *</label>
+
+      <label for="player4Id">
+        ID اللاعب <span class="required">*</span>
+      </label>
       <input id="player4Id" name="player4Id" required
              inputmode="numeric" maxlength="30">
     </div>
 
     <div class="section">
       <h3>اللاعب الخامس <span class="optional">(اختياري)</span></h3>
+
       <label for="player5">اسم اللاعب</label>
       <input id="player5" name="player5" maxlength="60">
+
       <label for="player5Id">ID اللاعب</label>
       <input id="player5Id" name="player5Id"
              inputmode="numeric" maxlength="30">
@@ -193,32 +281,101 @@ footer {
 
     <div class="section">
       <h3>اللاعب السادس <span class="optional">(اختياري)</span></h3>
+
       <label for="player6">اسم اللاعب</label>
       <input id="player6" name="player6" maxlength="60">
+
       <label for="player6Id">ID اللاعب</label>
       <input id="player6Id" name="player6Id"
              inputmode="numeric" maxlength="30">
     </div>
 
     <div class="section">
-      <h3>التواصل</h3>
-      <label for="whatsapp">رقم واتساب قائد السكواد *</label>
+      <h3>لوغو السكواد <span class="required">*</span></h3>
+
+      <label for="squadLogo">
+        اختر صورة لوغو فريقك <span class="required">*</span>
+      </label>
+
+      <input
+        id="squadLogo"
+        name="squadLogo"
+        type="file"
+        accept="image/png,image/jpeg,image/webp"
+        required>
+
+      <img id="logoPreview" class="preview" alt="معاينة لوغو السكواد">
+
+      <p class="note">
+        رفع اللوغو إجباري. الصيغ المقبولة PNG وJPG وWEBP،
+        والحد الأقصى للحجم 3 ميغابايت.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>معلومات التواصل</h3>
+
+      <label for="whatsapp">
+        رقم واتساب قائد السكواد <span class="required">*</span>
+      </label>
       <input id="whatsapp" name="whatsapp" type="tel"
              required maxlength="25" placeholder="+213...">
     </div>
 
     <button type="submit">إرسال طلب التسجيل</button>
-    <p class="note" id="message" role="status"></p>
+
+    <p id="message" class="note" role="status"></p>
   </form>
 </main>
 
-<footer>© FF LEGEND ARENA — جميع الحقوق محفوظة</footer>
+<footer>
+  © FF LEGEND ARENA — جميع الحقوق محفوظة
+</footer>
 
 <script>
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
+const logoInput = document.getElementById("squadLogo");
+const logoPreview = document.getElementById("logoPreview");
+const form = document.getElementById("registrationForm");
+const message = document.getElementById("message");
+
+logoInput.addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (!file) {
+    logoPreview.style.display = "none";
+    logoPreview.removeAttribute("src");
+    return;
+  }
+
+  const allowedTypes = [
+    "image/png",
+    "image/jpeg",
+    "image/webp"
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    alert("يرجى اختيار صورة PNG أو JPG أو WEBP.");
+    this.value = "";
+    logoPreview.style.display = "none";
+    return;
+  }
+
+  if (file.size > 3 * 1024 * 1024) {
+    alert("حجم اللوغو يجب ألا يتجاوز 3 ميغابايت.");
+    this.value = "";
+    logoPreview.style.display = "none";
+    return;
+  }
+
+  logoPreview.src = URL.createObjectURL(file);
+  logoPreview.style.display = "block";
+});
+
+form.addEventListener("submit", function (event) {
   event.preventDefault();
-  document.getElementById("message").textContent =
-    "التصميم جاهز، لكن التسجيل غير مفعّل بعد. يجب ربط الموقع بخدمة تحفظ الطلبات قبل استقبال الفرق.";
+
+  message.textContent =
+    "التصميم جاهز، لكن إرسال التسجيلات وحفظ معلومات اللاعبين واللوغو غير مفعّل بعد. يجب ربط الموقع بخدمة تخزين قبل استقبال التسجيلات الحقيقية.";
 });
 </script>
 
