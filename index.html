@@ -1,1 +1,226 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF LEGEND ARENA | التسجيل</title>
+<style>
+:root {
+  --gold: #f5c451;
+  --red: #ff344f;
+  --blue: #36c8ff;
+  --dark: #070b18;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: var(--dark);
+  min-height: 100vh;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(4,8,22,.88), rgba(4,8,22,.94)),
+    url("logo.jpg") center center / cover no-repeat;
+  z-index: -1;
+}
+header {
+  text-align: center;
+  padding: 28px 15px 12px;
+}
+.logo {
+  width: 100%;
+  max-width: 420px;
+  height: 170px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 15px #36c8ff66);
+}
+h1 {
+  margin: 10px 0;
+  font-size: 27px;
+  color: var(--gold);
+  text-shadow: 0 0 15px #f5c45155;
+}
+.subtitle {
+  color: #c8d6ef;
+  font-size: 14px;
+}
+.container {
+  width: min(92%, 560px);
+  margin: 20px auto 35px;
+  padding: 22px;
+  border: 1px solid #f5c45188;
+  border-radius: 18px;
+  background: rgba(8,14,32,.94);
+  box-shadow: 0 0 30px #0008, 0 0 18px #36c8ff18;
+}
+h2 {
+  text-align: center;
+  color: var(--blue);
+  font-size: 20px;
+  margin-top: 0;
+}
+.note {
+  text-align: center;
+  color: #c6cee0;
+  font-size: 13px;
+  line-height: 1.8;
+}
+label {
+  display: block;
+  margin: 16px 0 7px;
+  font-size: 14px;
+  color: var(--gold);
+}
+input {
+  width: 100%;
+  padding: 13px;
+  color: white;
+  background: #101a30;
+  border: 1px solid #344763;
+  border-radius: 9px;
+  outline: none;
+  font-size: 15px;
+}
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 8px #36c8ff44;
+}
+.section {
+  margin-top: 24px;
+  padding-top: 5px;
+  border-top: 1px solid #344763;
+}
+.section h3 {
+  color: var(--gold);
+  font-size: 16px;
+}
+.optional {
+  color: #9caac3;
+  font-size: 12px;
+}
+button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(100deg, #e9b63e, #ffdf83);
+  color: #11182a;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:active { transform: scale(.99); }
+footer {
+  text-align: center;
+  padding: 10px 10px 25px;
+  color: #9caac3;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <img class="logo" src="logo.jpg" alt="FF LEGEND ARENA Logo">
+  <h1>FF LEGEND ARENA</h1>
+  <div class="subtitle">FREE FIRE TOURNAMENT</div>
+</header>
+
+<main class="container">
+  <h2>تسجيل السكواد</h2>
+  <p class="note">
+    املأ معلومات قائد السكواد واللاعبين بدقة.<br>
+    اللاعبان الخامس والسادس اختياريان.
+  </p>
+
+  <form id="registrationForm">
+    <label for="squad">اسم السكواد *</label>
+    <input id="squad" name="squad" required maxlength="60"
+           placeholder="أدخل اسم السكواد">
+
+    <div class="section">
+      <h3>قائد السكواد</h3>
+      <label for="captain">اسم اللاعب داخل اللعبة *</label>
+      <input id="captain" name="captain" required maxlength="60">
+
+      <label for="captainId">ID اللاعب *</label>
+      <input id="captainId" name="captainId" required
+             inputmode="numeric" maxlength="30">
+    </div>
+
+    <div class="section">
+      <h3>اللاعب الثاني</h3>
+      <label for="player2">اسم اللاعب *</label>
+      <input id="player2" name="player2" required maxlength="60">
+      <label for="player2Id">ID اللاعب *</label>
+      <input id="player2Id" name="player2Id" required
+             inputmode="numeric" maxlength="30">
+    </div>
+
+    <div class="section">
+      <h3>اللاعب الثالث</h3>
+      <label for="player3">اسم اللاعب *</label>
+      <input id="player3" name="player3" required maxlength="60">
+      <label for="player3Id">ID اللاعب *</label>
+      <input id="player3Id" name="player3Id" required
+             inputmode="numeric" maxlength="30">
+    </div>
+
+    <div class="section">
+      <h3>اللاعب الرابع</h3>
+      <label for="player4">اسم اللاعب *</label>
+      <input id="player4" name="player4" required maxlength="60">
+      <label for="player4Id">ID اللاعب *</label>
+      <input id="player4Id" name="player4Id" required
+             inputmode="numeric" maxlength="30">
+    </div>
+
+    <div class="section">
+      <h3>اللاعب الخامس <span class="optional">(اختياري)</span></h3>
+      <label for="player5">اسم اللاعب</label>
+      <input id="player5" name="player5" maxlength="60">
+      <label for="player5Id">ID اللاعب</label>
+      <input id="player5Id" name="player5Id"
+             inputmode="numeric" maxlength="30">
+    </div>
+
+    <div class="section">
+      <h3>اللاعب السادس <span class="optional">(اختياري)</span></h3>
+      <label for="player6">اسم اللاعب</label>
+      <input id="player6" name="player6" maxlength="60">
+      <label for="player6Id">ID اللاعب</label>
+      <input id="player6Id" name="player6Id"
+             inputmode="numeric" maxlength="30">
+    </div>
+
+    <div class="section">
+      <h3>التواصل</h3>
+      <label for="whatsapp">رقم واتساب قائد السكواد *</label>
+      <input id="whatsapp" name="whatsapp" type="tel"
+             required maxlength="25" placeholder="+213...">
+    </div>
+
+    <button type="submit">إرسال طلب التسجيل</button>
+    <p class="note" id="message" role="status"></p>
+  </form>
+</main>
+
+<footer>© FF LEGEND ARENA — جميع الحقوق محفوظة</footer>
+
+<script>
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  document.getElementById("message").textContent =
+    "التصميم جاهز، لكن التسجيل غير مفعّل بعد. يجب ربط الموقع بخدمة تحفظ الطلبات قبل استقبال الفرق.";
+});
+</script>
+
+</body>
+</html>
