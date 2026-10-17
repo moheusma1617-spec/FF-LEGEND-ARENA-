@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FF LEGEND ARENA | Admin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0b1020;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 { color: #42a5ff; text-align: center; }
+    .panel {
+      background: #151d31;
+      border: 1px solid #293b5c;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+    input, button {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0;
+      border-radius: 8px;
+      border: 1px solid #354967;
+      font-size: 16px;
+    }
+    input { background: #0b1020; color: white; }
+    button {
+      background: #1677ff;
+      color: white;
+      border: 0;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .danger { background: #c62828; }
+    .muted { color: #b7c5dc; }
+    .team {
+      background: #10182a;
+      border: 1px solid #354967;
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: 14px;
+      overflow-wrap: anywhere;
+    }
+    .team img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      background: white;
+      border-radius: 8px;
+    }
+    .actions { display: flex; gap: 8px; }
+    .actions button { flex: 1; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🏆 FF LEGEND ARENA</h1>
+  <p style="text-align:center">لوحة تحكم الأدمن — دخول خاص</p>
+
+  <section class="panel" id="loginPanel">
+    <h2>تسجيل دخول الأدمن</h2>
+    <form id="loginForm">
+      <input id="email" type="email" placeholder="البريد الإلكتروني للأدمن" required>
+      <input id="password" type="password" placeholder="كلمة السر" required>
+      <button type="submit">دخول</button>
+    </form>
+    <p id="loginMessage" class="muted"></p>
+  </section>
+
+  <section id="dashboard" hidden>
+    <div class="panel">
+      <h2>التسجيلات</h2>
+      <p id="account"></p>
+      <button id="refreshButton">تحديث التسجيلات</button>
+      <button id="logoutButton" class="danger">تسجيل الخروج</button>
+      <p id="message" class="muted"></p>
+    </div>
+    <div id="registrations"></div>
+  </section>
+</div>
+
+<script type="module">
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  import {
+    getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+  import {
+    getFirestore, collection, getDocs, doc, updateDoc,
+    query, orderBy
+  } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDJQhCazcuvc5vCrmFEj3WvBOGrV41ASMg",
+    authDomain: "ff-legend-arena-fe89a.firebaseapp.com",
+    projectId: "ff-legend-arena-fe89a",
+    storageBucket: "ff-legend-arena-fe89a.firebasestorage.app",
+    messagingSenderId: "128872545017",
+    appId: "1:128872545017:web:73f025846cce1f1cb44028"
+  };
+
+  const ADMIN_UID = "ADVPOE2nMiRrSuID7wbTUCWJQLG2";
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const loginPanel = document.getElementById("loginPanel");
+  const dashboard = document.getElementById("dashboard");
+  const loginMessage = document.getElementById("loginMessage");
+  const message = document.getElementById("message");
+  const registrations = document.getElementById("registrations");
+
+  document.getElementById("loginForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    loginMessage.textContent = "جارٍ تسجيل الدخول...";
+    try {
+      const credential = await signInWithEmailAndPassword(
+        auth,
+        document.getElementById("email").value.trim(),
+        document.getElementById("password").value
+      );
+      if (credential.user.uid !== ADMIN_UID) {
+        await signOut(auth);
+        loginMessage.textContent = "هذا الحساب ليس حساب الأدمن.";
+        return;
+      }
+      loginMessage.textContent = "";
+    } catch (error) {
+      loginMessage.textContent = "تعذّر الدخول. تحقق من البريد وكلمة السر.";
+    }
+  });
+
+  onAuthStateChanged(auth, async user => {
+    if (user && user.uid === ADMIN_UID) {
+      loginPanel.hidden = true;
+      dashboard.hidden = false;
+      document.getElementById("account").textContent =
+        "تم الدخول بحساب الأدمن.";
+      await loadRegistrations();
+    } else {
+      loginPanel.hidden = false;
+      dashboard.hidden = true;
+      registrations.replaceChildren();
+    }
+  });
+
+  async function loadRegistrations() {
+    message.textContent = "جارٍ تحميل التسجيلات...";
+    registrations.replaceChildren();
+    try {
+      const snapshot = await getDocs(
+        query(collection(db, "registrations"), orderBy("createdAt", "desc"))
+      );
+      if (snapshot.empty) {
+        message.textContent = "لا توجد تسجيلات.";
+        return;
+      }
+      message.textContent = "عدد التسجيلات: " + snapshot.size;
+      snapshot.forEach(item => {
+        const data = item.data();
+        const card = document.createElement("article");
+        card.className = "team";
+
+        const title = document.createElement("h3");
+        title.textContent = data.squadName || "سكواد بلا اسم";
+        card.appendChild(title);
+
+        if (typeof data.logoData === "string" &&
+            data.logoData.startsWith("data:image/")) {
+          const img = document.createElement("img");
+          img.src = data.logoData;
+          img.alt = "شعار السكواد";
+          card.appendChild(img);
+        }
+
+        const details = document.createElement("p");
+        details.textContent =
+          "اسم الكابتن: " + (data.captainName || "غير متوفر") +
+          "\nمعرّف الكابتن: " + (data.captainId || "غير متوفر") +
+          "\nواتساب: " + (data.whatsapp || "غير متوفر") +
+          "\nالحالة: " + (data.status || "غير محددة");
+        details.style.whiteSpace = "pre-line";
+        card.appendChild(details);
+
+        if (Array.isArray(data.players)) {
+          const heading = document.createElement("h4");
+          heading.textContent = "اللاعبون";
+          card.appendChild(heading);
+          data.players.forEach((player, index) => {
+            const p = document.createElement("p");
+            p.textContent = (index + 1) + ". " +
+              (player.name || "بدون اسم") +
+              " — ID: " + (player.id || "غير متوفر");
+            card.appendChild(p);
+          });
+        }
+
+        const actions = document.createElement("div");
+        actions.className = "actions";
+
+        for (const status of ["accepted", "rejected"]) {
+          const button = document.createElement("button");
+          button.textContent = status === "accepted" ? "قبول" : "رفض";
+          if (status === "rejected") button.className = "danger";
+          button.addEventListener("click", async () => {
+            if (!confirm("هل تريد تغيير حالة هذا التسجيل؟")) return;
+            try {
+              await updateDoc(doc(db, "registrations", item.id), { status });
+              message.textContent = "تم تحديث الحالة.";
+              await loadRegistrations();
+            } catch (error) {
+              message.textContent = "فشل تحديث الحالة. تحقق من قواعد Firebase.";
+            }
+          });
+          actions.appendChild(button);
+        }
+        card.appendChild(actions);
+        registrations.appendChild(card);
+      });
+    } catch (error) {
+      message.textContent =
+        "تعذّر تحميل التسجيلات. تأكد من الاتصال وقواعد Firebase.";
+    }
+  }
+
+  document.getElementById("refreshButton").addEventListener(
+    "click", loadRegistrations
+  );
+  document.getElementById("logoutButton").addEventListener("click", async () => {
+    await signOut(auth);
+  });
+</script>
+</body>
+</html>
