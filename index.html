@@ -2,411 +2,224 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FF LEGEND ARENA | تسجيل الفرق</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #090d18;
-      color: white;
-      min-height: 100vh;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 35px 15px;
-      background: linear-gradient(135deg, #171b38, #6b210d);
-      border-bottom: 3px solid #ff642d;
-    }
-
-    .hero h1 {
-      color: #ff6b35;
-      font-size: 30px;
-      margin: 0 0 10px;
-      text-shadow: 0 0 15px #ff4b1f66;
-    }
-
-    .hero p {
-      color: #eee;
-      margin: 0;
-      line-height: 1.7;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 650px;
-      margin: 25px auto;
-      padding: 22px;
-      background: #131a2b;
-      border: 1px solid #29334b;
-      border-radius: 16px;
-      box-shadow: 0 10px 35px #0005;
-    }
-
-    h2 {
-      text-align: center;
-      color: #ff7545;
-      margin-top: 0;
-    }
-
-    .section-title {
-      color: #ffb18d;
-      margin: 24px 0 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #343d54;
-    }
-
-    label {
-      display: block;
-      margin: 15px 0 7px;
-      font-size: 14px;
-      color: #e3e8f4;
-    }
-
-    input {
-      display: block;
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #39445e;
-      border-radius: 9px;
-      background: #0c1220;
-      color: white;
-      font-size: 15px;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #ff7545;
-    }
-
-    input[type="file"] {
-      padding: 10px;
-    }
-
-    .hint {
-      color: #aeb9d0;
-      font-size: 12px;
-      line-height: 1.6;
-      margin-top: 6px;
-    }
-
-    #logoPreview {
-      display: none;
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin: 15px auto;
-      border-radius: 12px;
-      border: 2px solid #ff7545;
-      background: #090d18;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 15px;
-      background: linear-gradient(90deg, #ff4b20, #ff853c);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    #message {
-      margin-top: 18px;
-      text-align: center;
-      line-height: 1.8;
-      overflow-wrap: anywhere;
-    }
-
-    footer {
-      text-align: center;
-      color: #9aa5bc;
-      padding: 20px;
-      font-size: 12px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF LEGEND ARENA | التسجيل</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:20px 12px;min-height:100vh;
+ font-family:Arial,Tahoma,sans-serif;color:#fff;
+ background:linear-gradient(145deg,#07111f,#10152b,#200e20);
+}
+.container{max-width:650px;margin:auto}
+header{text-align:center;margin-bottom:25px}
+.logo{width:115px;height:115px;object-fit:contain;border-radius:18px}
+h1{font-size:28px;color:#49c7ff;margin:12px 0}
+header p{color:#c4cde0}
+.card{
+ background:#101a2b;border:1px solid #2c5278;
+ border-radius:16px;padding:20px;margin-bottom:18px;
+ box-shadow:0 8px 25px #0005
+}
+h2{font-size:19px;color:#55caff;margin-top:0}
+label{display:block;margin:15px 0 7px;font-weight:bold}
+input{
+ width:100%;padding:13px;border-radius:9px;
+ border:1px solid #435675;background:#080f1c;
+ color:white;font-size:15px
+}
+input[type=file]{padding:9px}
+button{
+ width:100%;padding:14px;margin-top:20px;
+ border:0;border-radius:10px;background:#1689ff;
+ color:white;font-weight:bold;font-size:17px;cursor:pointer
+}
+button:disabled{opacity:.55}
+.note{font-size:13px;color:#b9c7dc;line-height:1.7}
+#preview{display:none;max-width:130px;max-height:130px;margin:12px auto}
+#message{text-align:center;line-height:1.8;overflow-wrap:anywhere}
+footer{text-align:center;color:#93a6c3;font-size:12px;margin-top:20px}
+</style>
 </head>
-
 <body>
-
-  <header class="hero">
-    <h1>FF LEGEND ARENA</h1>
-    <p>بطولة فري فاير | سجّل فريقك الآن</p>
-  </header>
-
-  <main class="container">
-    <h2>تسجيل السكواد</h2>
-
-    <p class="hint">
-      عمّر معلومات الفريق واللاعبين، وارفع لوغو السكواد لإكمال التسجيل.
-    </p>
-
-    <form id="registrationForm">
-
-      <h3 class="section-title">معلومات الفريق</h3>
-
-      <label for="squad">اسم السكواد *</label>
-      <input id="squad" name="squad" required maxlength="60"
-             placeholder="اسم الفريق">
-
-      <label for="squadLogo">لوغو السكواد *</label>
-      <input id="squadLogo" name="squadLogo" type="file"
-             accept="image/png,image/jpeg,image/webp" required>
-
-      <p class="hint">الصيغ المقبولة: PNG و JPG و WEBP، الحجم الأقصى 3MB.</p>
-      <img id="logoPreview" alt="معاينة لوغو الفريق">
-
-      <label for="whatsapp">رقم واتساب للتواصل *</label>
-      <input id="whatsapp" name="whatsapp" type="tel"
-             required maxlength="25" placeholder="مثال: 05XXXXXXXX">
-
-      <h3 class="section-title">اللاعب الأول — الكابتن</h3>
-
-      <label for="captain">اسم اللاعب *</label>
-      <input id="captain" name="captain" required maxlength="60">
-
-      <label for="captainId">ID فري فاير *</label>
-      <input id="captainId" name="captainId" required
-             maxlength="30" inputmode="numeric">
-
-      <h3 class="section-title">اللاعب الثاني</h3>
-
-      <label for="player2">اسم اللاعب *</label>
-      <input id="player2" name="player2" required maxlength="60">
-
-      <label for="player2Id">ID فري فاير *</label>
-      <input id="player2Id" name="player2Id" required maxlength="30">
-
-      <h3 class="section-title">اللاعب الثالث</h3>
-
-      <label for="player3">اسم اللاعب *</label>
-      <input id="player3" name="player3" required maxlength="60">
-
-      <label for="player3Id">ID فري فاير *</label>
-      <input id="player3Id" name="player3Id" required maxlength="30">
-
-      <h3 class="section-title">اللاعب الرابع</h3>
-
-      <label for="player4">اسم اللاعب *</label>
-      <input id="player4" name="player4" required maxlength="60">
-
-      <label for="player4Id">ID فري فاير *</label>
-      <input id="player4Id" name="player4Id" required maxlength="30">
-
-      <h3 class="section-title">اللاعب الخامس — احتياطي (اختياري)</h3>
-
-      <label for="player5">اسم اللاعب</label>
-      <input id="player5" name="player5" maxlength="60">
-
-      <label for="player5Id">ID فري فاير</label>
-      <input id="player5Id" name="player5Id" maxlength="30">
-
-      <h3 class="section-title">اللاعب السادس — احتياطي (اختياري)</h3>
-
-      <label for="player6">اسم اللاعب</label>
-      <input id="player6" name="player6" maxlength="60">
-
-      <label for="player6Id">ID فري فاير</label>
-      <input id="player6Id" name="player6Id" maxlength="30">
-
-      <button id="submitButton" type="submit">
-        إرسال التسجيل
-      </button>
-
-      <p id="message" role="status" aria-live="polite"></p>
-
-    </form>
-  </main>
-
-  <footer>
-    FF LEGEND ARENA © جميع الحقوق محفوظة
-  </footer>
-
-  <script type="module">
-    import { initializeApp } from
-      "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-
-    import {
-      getFirestore,
-      collection,
-      addDoc,
-      serverTimestamp
-    } from
-      "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-    import {
-      getStorage,
-      ref,
-      uploadBytes,
-      getDownloadURL
-    } from
-      "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
-
-    // إعدادات مشروع Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDJQhCazcuvc5vCrmFEj3WvBOGrV41ASMg",
-      authDomain: "ff-legend-arena-fe89a.firebaseapp.com",
-      projectId: "ff-legend-arena-fe89a",
-      storageBucket: "ff-legend-arena-fe89a.firebasestorage.app",
-      messagingSenderId: "128872545017",
-      appId: "1:128872545017:web:73f025846cce1f1cb44028"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const storage = getStorage(app);
-
-    const form = document.getElementById("registrationForm");
-    const logoInput = document.getElementById("squadLogo");
-    const logoPreview = document.getElementById("logoPreview");
-    const message = document.getElementById("message");
-    const submitButton = document.getElementById("submitButton");
-
-    const allowedTypes = [
-      "image/png",
-      "image/jpeg",
-      "image/webp"
-    ];
-
-    // معاينة اللوغو قبل الإرسال
-    logoInput.addEventListener("change", () => {
-      const file = logoInput.files[0];
-
-      logoPreview.style.display = "none";
-      logoPreview.removeAttribute("src");
-
-      if (!file) return;
-
-      if (!allowedTypes.includes(file.type)) {
-        alert("اختار صورة PNG أو JPG أو WEBP.");
-        logoInput.value = "";
-        return;
-      }
-
-      if (file.size > 3 * 1024 * 1024) {
-        alert("حجم اللوغو لازم يكون أقل من 3MB.");
-        logoInput.value = "";
-        return;
-      }
-
-      logoPreview.src = URL.createObjectURL(file);
-      logoPreview.style.display = "block";
-    });
-
-    // إرسال معلومات السكواد إلى Firebase
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      if (!form.reportValidity()) return;
-
-      const file = logoInput.files[0];
-
-      if (!file) {
-        message.textContent = "اختار لوغو السكواد أولاً.";
-        return;
-      }
-
-      if (!allowedTypes.includes(file.type) ||
-          file.size > 3 * 1024 * 1024) {
-        message.textContent = "اللوغو غير صالح أو حجمه كبير.";
-        return;
-      }
-
-      submitButton.disabled = true;
-      message.textContent = "جاري إرسال التسجيل... ما تغلقش الصفحة.";
-
-      try {
-        const safeFileName = file.name.replace(
-          /[^a-zA-Z0-9._-]/g, "_"
-        );
-
-        const logoPath =
-          "squadLogos/" + Date.now() + "_" + safeFileName;
-
-        const logoRef = ref(storage, logoPath);
-
-        await uploadBytes(logoRef, file, {
-          contentType: file.type
-        });
-
-        const logoURL = await getDownloadURL(logoRef);
-
-        const registration = {
-          squad: form.elements.squad.value.trim(),
-
-          captain: form.elements.captain.value.trim(),
-          captainId: form.elements.captainId.value.trim(),
-
-          player2: form.elements.player2.value.trim(),
-          player2Id: form.elements.player2Id.value.trim(),
-
-          player3: form.elements.player3.value.trim(),
-          player3Id: form.elements.player3Id.value.trim(),
-
-          player4: form.elements.player4.value.trim(),
-          player4Id: form.elements.player4Id.value.trim(),
-
-          player5: form.elements.player5.value.trim(),
-          player5Id: form.elements.player5Id.value.trim(),
-
-          player6: form.elements.player6.value.trim(),
-          player6Id: form.elements.player6Id.value.trim(),
-
-          whatsapp: form.elements.whatsapp.value.trim(),
-
-          logoURL: logoURL,
-          logoPath: logoPath,
-
-          status: "pending",
-          createdAt: serverTimestamp()
-        };
-
-        await addDoc(
-          collection(db, "registrations"),
-          registration
-        );
-
-        message.textContent =
-          "✅ تم إرسال التسجيل بنجاح!";
-
-        form.reset();
-        logoPreview.style.display = "none";
-        logoPreview.removeAttribute("src");
-
-      } catch (error) {
-        console.error("Firebase error:", error);
-
-        if (error.code === "storage/unauthorized" ||
-            error.code === "permission-den denied") {
-          message.textContent =
-            "ما قدرناش نرفع اللوغو. راجع قواعد Firebase Storage.";
-        } else if (error.code === "permission-denied") {
-          message.textContent =
-            "ما قدرناش نحفظ التسجيل. راجع قواعد Firestore.";
-        } else {
-          message.textContent =
-            "فشل التسجيل: " + (error.code || error.message);
-        }
-      } finally {
-        submitButton.disabled = false;
-      }
-    });
-  </script>
-
+<div class="container">
+<header>
+<img id="brandLogo" class="logo" src="logo.jpg" alt="FF LEGEND ARENA"
+ onerror="this.style.display='none'">
+<h1>FF LEGEND ARENA</h1>
+<p>FREE FIRE TOURNAMENT — SEASON 1</p>
+</header>
+
+<form id="registrationForm">
+<div class="card">
+<h2>معلومات السكواد</h2>
+<label for="squad">اسم السكواد *</label>
+<input id="squad" maxlength="50" required>
+
+<label for="captain">اسم الكابتن *</label>
+<input id="captain" maxlength="50" required>
+
+<label for="captainId">ID الكابتن *</label>
+<input id="captainId" inputmode="numeric" maxlength="30" required>
+
+<label for="whatsapp">رقم واتساب مع رمز الدولة *</label>
+<input id="whatsapp" type="tel" placeholder="+213..." maxlength="25" required>
+
+<label for="squadLogo">شعار السكواد *</label>
+<input id="squadLogo" type="file"
+ accept="image/png,image/jpeg,image/webp" required>
+<img id="preview" alt="معاينة شعار السكواد">
+<p class="note">الصيغ المقبولة PNG وJPG وWEBP. الحد الأقصى 500 كيلوبايت.</p>
+</div>
+
+<div class="card">
+<h2>اللاعبون</h2>
+<p class="note">أدخل بيانات اللاعبين. اللاعبون من 2 إلى 4 إجباريون، واللاعبان 5 و6 اختياريان.</p>
+<div id="players"></div>
+</div>
+
+<div class="card">
+<p class="note">تأكد من صحة المعلومات قبل إرسال التسجيل. إرسال الطلب لا يعني قبوله تلقائيًا.</p>
+<button id="submitBtn" type="submit">إرسال طلب التسجيل</button>
+<p id="message" role="status"></p>
+</div>
+</form>
+<footer>FF LEGEND ARENA • OFFICIAL REGISTRATION</footer>
+</div>
+
+<script type="module">
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+ getFirestore, collection, addDoc, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+const firebaseConfig = {
+ apiKey: "AIzaSyDJQhCazcuvc5vCrmFEj3WvBOGrV41ASMg",
+ authDomain: "ff-legend-arena-fe89a.firebaseapp.com",
+ projectId: "ff-legend-arena-fe89a",
+ storageBucket: "ff-legend-arena-fe89a.firebasestorage.app",
+ messagingSenderId: "128872545017",
+ appId: "1:128872545017:web:73f025846cce1f1cb44028"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const playersBox = document.getElementById("players");
+
+for (let n = 2; n <= 6; n++) {
+ const required = n <= 4;
+ const section = document.createElement("div");
+ section.innerHTML = `
+ <h2 style="margin-top:22px">اللاعب ${n}</h2>
+ <label for="p${n}name">اسم اللاعب ${n}${required ? " *" : ""}</label>
+ <input id="p${n}name" maxlength="50" ${required ? "required" : ""}>
+ <label for="p${n}id">ID اللاعب ${n}${required ? " *" : ""}</label>
+ <input id="p${n}id" maxlength="30" inputmode="numeric"
+ ${required ? "required" : ""}>
+ `;
+ playersBox.appendChild(section);
+}
+
+const logoInput = document.getElementById("squadLogo");
+const preview = document.getElementById("preview");
+let logoData = "";
+
+logoInput.addEventListener("change", () => {
+ const file = logoInput.files[0];
+ logoData = "";
+ preview.style.display = "none";
+
+ if (!file) return;
+
+ if (!["image/png","image/jpeg","image/webp"].includes(file.type)) {
+  alert("اختر صورة PNG أو JPG أو WEBP.");
+  logoInput.value = "";
+  return;
+ }
+ if (file.size > 500 * 1024) {
+  alert("حجم الصورة أكبر من 500 كيلوبايت.");
+  logoInput.value = "";
+  return;
+ }
+
+ const reader = new FileReader();
+ reader.onload = () => {
+  logoData = reader.result;
+  preview.src = logoData;
+  preview.style.display = "block";
+ };
+ reader.readAsDataURL(file);
+});
+
+const form = document.getElementById("registrationForm");
+const btn = document.getElementById("submitBtn");
+const message = document.getElementById("message");
+
+form.addEventListener("submit", async (event) => {
+ event.preventDefault();
+
+ if (!logoData) {
+  message.textContent = "يرجى اختيار شعار السكواد.";
+  return;
+ }
+
+ const players = [];
+ for (let n = 2; n <= 6; n++) {
+  const name = document.getElementById(`p${n}name`).value.trim();
+  const id = document.getElementById(`p${n}id`).value.trim();
+
+  if (name || id) {
+   if (!name || !id) {
+    message.textContent = `أكمل اسم وID اللاعب ${n}.`;
+    return;
+   }
+   players.push({number:n, name, id});
+  } else if (n <= 4) {
+   message.textContent = `بيانات اللاعب ${n} إجبارية.`;
+   return;
+  }
+ }
+
+ const squadName = document.getElementById("squad").value.trim();
+ const captainName = document.getElementById("captain").value.trim();
+ const captainId = document.getElementById("captainId").value.trim();
+ const whatsapp = document.getElementById("whatsapp").value.trim();
+
+ if (!squadName || !captainName || !captainId || !whatsapp) {
+  message.textContent = "أكمل جميع المعلومات الإجبارية.";
+  return;
+ }
+
+ btn.disabled = true;
+ message.textContent = "جارٍ إرسال الطلب...";
+
+ try {
+  await addDoc(collection(db, "registrations"), {
+   squadName,
+   captainName,
+   captainId,
+   whatsapp,
+   players,
+   logoData,
+   status: "pending",
+   createdAt: serverTimestamp()
+  });
+
+  message.textContent =
+   "تم إرسال طلبك بنجاح! انتظر مراجعة إدارة البطولة.";
+  form.reset();
+  logoData = "";
+  preview.style.display = "none";
+ } catch (error) {
+  console.error(error);
+  message.textContent =
+   "لم يتم إرسال التسجيل. قد تحتاج قاعدة البيانات إلى إعداد قواعد الأمان. تواصل مع إدارة البطولة.";
+ } finally {
+  btn.disabled = false;
+ }
+});
+</script>
 </body>
 </html>
